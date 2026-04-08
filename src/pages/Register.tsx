@@ -39,7 +39,7 @@ export default function Register() {
       password,
       options: {
         data: { full_name: fullName, phone_number: phone, role: selectedRole },
-        emailRedirectTo: window.location.origin,
+        emailRedirectTo: "https://enms-nu.vercel.app",
       },
     });
 

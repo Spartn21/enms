@@ -1,9 +1,12 @@
 import { Baby, ClipboardCheck, CreditCard, MessageSquare, Calendar } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { StatCard } from "@/components/StatCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 export default function ParentDashboard() {
+  const navigate = useNavigate();
+
   return (
     <div className="space-y-6 animate-fade-in">
       <div>
@@ -17,24 +20,14 @@ export default function ParentDashboard() {
         <StatCard title="Messages" value="0" icon={<MessageSquare className="h-5 w-5" />} color="primary" />
       </div>
 
-      {/* Quick Actions */}
       <div className="flex flex-wrap gap-2">
-        <Button size="sm" className="gap-2">
-          <MessageSquare className="h-4 w-4" /> Message Teacher
-        </Button>
-        <Button size="sm" variant="outline" className="gap-2">
-          <CreditCard className="h-4 w-4" /> Pay Fees
-        </Button>
-        <Button size="sm" variant="outline" className="gap-2">
-          <Calendar className="h-4 w-4" /> Report Absence
-        </Button>
+        <Button size="sm" className="gap-2" onClick={() => navigate("/parent/messages")}><MessageSquare className="h-4 w-4" /> Message Teacher</Button>
+        <Button size="sm" variant="outline" className="gap-2" onClick={() => navigate("/parent/fees")}><CreditCard className="h-4 w-4" /> Pay Fees</Button>
+        <Button size="sm" variant="outline" className="gap-2" onClick={() => navigate("/parent/activities")}><Calendar className="h-4 w-4" /> View Activities</Button>
       </div>
 
-      {/* Today's Timeline */}
       <Card className="shadow-card">
-        <CardHeader className="pb-3">
-          <CardTitle className="text-base">Today's Activity</CardTitle>
-        </CardHeader>
+        <CardHeader className="pb-3"><CardTitle className="text-base">Today's Activity</CardTitle></CardHeader>
         <CardContent>
           <div className="flex flex-col items-center justify-center py-8 text-center">
             <Baby className="h-12 w-12 text-muted-foreground/30 mb-2" />
@@ -44,11 +37,8 @@ export default function ParentDashboard() {
         </CardContent>
       </Card>
 
-      {/* Announcements */}
       <Card className="shadow-card">
-        <CardHeader className="pb-3">
-          <CardTitle className="text-base">Announcements</CardTitle>
-        </CardHeader>
+        <CardHeader className="pb-3"><CardTitle className="text-base">Announcements</CardTitle></CardHeader>
         <CardContent>
           <p className="text-sm text-muted-foreground text-center py-4">No announcements yet.</p>
         </CardContent>
