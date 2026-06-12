@@ -1,4 +1,4 @@
-import { Baby, ClipboardCheck, DollarSign, MessageSquare, UserPlus, Megaphone, FileText } from "lucide-react";
+import { Baby, ClipboardCheck, DollarSign, MessageSquare, UserPlus, Megaphone, FileText, GraduationCap, UserCheck } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { StatCard } from "@/components/StatCard";
 import { Button } from "@/components/ui/button";
@@ -26,6 +26,8 @@ export default function AdminDashboard() {
         <CardContent>
           <div className="flex flex-wrap gap-2">
             <Button size="sm" className="gap-2" onClick={() => navigate("/admin/children")}><UserPlus className="h-4 w-4" /> Register Child</Button>
+            <Button size="sm" variant="outline" className="gap-2" onClick={() => navigate("/admin/classes")}><GraduationCap className="h-4 w-4" /> Manage Classes</Button>
+            <Button size="sm" variant="outline" className="gap-2" onClick={() => navigate("/admin/access-requests")}><UserCheck className="h-4 w-4" /> Access Requests</Button>
             <Button size="sm" variant="outline" className="gap-2" onClick={() => navigate("/admin/messages")}><Megaphone className="h-4 w-4" /> Announcement</Button>
             <Button size="sm" variant="outline" className="gap-2" onClick={() => navigate("/admin/reports")}><FileText className="h-4 w-4" /> Generate Report</Button>
           </div>

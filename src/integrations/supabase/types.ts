@@ -215,6 +215,53 @@ export type Database = {
           },
         ]
       }
+      child_access_requests: {
+        Row: {
+          child_id: string
+          created_at: string
+          id: string
+          note: string | null
+          parent_id: string
+          relationship: string
+          reviewed_at: string | null
+          reviewed_by: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          child_id: string
+          created_at?: string
+          id?: string
+          note?: string | null
+          parent_id: string
+          relationship?: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          child_id?: string
+          created_at?: string
+          id?: string
+          note?: string | null
+          parent_id?: string
+          relationship?: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "child_access_requests_child_id_fkey"
+            columns: ["child_id"]
+            isOneToOne: false
+            referencedRelation: "children"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       children: {
         Row: {
           allergies: string | null
@@ -652,6 +699,15 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      get_children_directory: {
+        Args: never
+        Returns: {
+          class_name: string
+          first_name: string
+          id: string
+          last_initial: string
+        }[]
+      }
       get_user_role: {
         Args: { _user_id: string }
         Returns: Database["public"]["Enums"]["app_role"]
