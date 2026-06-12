@@ -18,6 +18,8 @@ import NotFound from "./pages/NotFound";
 
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import ChildrenManagement from "./pages/admin/ChildrenManagement";
+import ClassesManagement from "./pages/admin/ClassesManagement";
+import AdminAccessRequests from "./pages/admin/AdminAccessRequests";
 import AttendanceManagement from "./pages/admin/AttendanceManagement";
 import FeeManagement from "./pages/admin/FeeManagement";
 import AdminMessages from "./pages/admin/MessagesPage";
@@ -30,6 +32,7 @@ import TeacherActivities from "./pages/teacher/TeacherActivities";
 import TeacherMessages from "./pages/teacher/TeacherMessages";
 
 import ParentDashboard from "./pages/parent/ParentDashboard";
+import ParentRequestAccess from "./pages/parent/ParentRequestAccess";
 import ParentActivities from "./pages/parent/ParentActivities";
 import ParentFees from "./pages/parent/ParentFees";
 import ParentMessages from "./pages/parent/ParentMessages";
@@ -66,6 +69,8 @@ const App = () => (
             {/* Admin Routes */}
             <Route path="/admin" element={<ProtectedRoute allowedRoles={["admin"]}><DashboardLayout><AdminDashboard /></DashboardLayout></ProtectedRoute>} />
             <Route path="/admin/children" element={<ProtectedRoute allowedRoles={["admin"]}><DashboardLayout><ChildrenManagement /></DashboardLayout></ProtectedRoute>} />
+            <Route path="/admin/classes" element={<ProtectedRoute allowedRoles={["admin"]}><DashboardLayout><ClassesManagement /></DashboardLayout></ProtectedRoute>} />
+            <Route path="/admin/access-requests" element={<ProtectedRoute allowedRoles={["admin"]}><DashboardLayout><AdminAccessRequests /></DashboardLayout></ProtectedRoute>} />
             <Route path="/admin/attendance" element={<ProtectedRoute allowedRoles={["admin"]}><DashboardLayout><AttendanceManagement /></DashboardLayout></ProtectedRoute>} />
             <Route path="/admin/fees" element={<ProtectedRoute allowedRoles={["admin"]}><DashboardLayout><FeeManagement /></DashboardLayout></ProtectedRoute>} />
             <Route path="/admin/messages" element={<ProtectedRoute allowedRoles={["admin"]}><DashboardLayout><AdminMessages /></DashboardLayout></ProtectedRoute>} />
@@ -80,6 +85,7 @@ const App = () => (
 
             {/* Parent Routes */}
             <Route path="/parent" element={<ProtectedRoute allowedRoles={["parent"]}><DashboardLayout><ParentDashboard /></DashboardLayout></ProtectedRoute>} />
+            <Route path="/parent/request-access" element={<ProtectedRoute allowedRoles={["parent"]}><DashboardLayout><ParentRequestAccess /></DashboardLayout></ProtectedRoute>} />
             <Route path="/parent/activities" element={<ProtectedRoute allowedRoles={["parent"]}><DashboardLayout><ParentActivities /></DashboardLayout></ProtectedRoute>} />
             <Route path="/parent/fees" element={<ProtectedRoute allowedRoles={["parent"]}><DashboardLayout><ParentFees /></DashboardLayout></ProtectedRoute>} />
             <Route path="/parent/messages" element={<ProtectedRoute allowedRoles={["parent"]}><DashboardLayout><ParentMessages /></DashboardLayout></ProtectedRoute>} />
