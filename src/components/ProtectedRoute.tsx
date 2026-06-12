@@ -1,14 +1,14 @@
 import { Navigate } from "react-router-dom";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth, AppRole } from "@/hooks/useAuth";
 import { Loader2 } from "lucide-react";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
-  allowedRoles?: ("admin" | "teacher" | "parent")[];
+  allowedRoles?: AppRole[];
 }
 
 export function ProtectedRoute({ children, allowedRoles }: ProtectedRouteProps) {
-  const { user, role, loading } = useAuth();
+  const { user, role, effectiveRole, loading } = useAuth();
 
   if (loading) {
     return (
@@ -18,13 +18,12 @@ export function ProtectedRoute({ children, allowedRoles }: ProtectedRouteProps) 
     );
   }
 
-  if (!user) {
-    return <Navigate to="/login" replace />;
-  }
+  if (!user) return <Navigate to="/login" replace />;
 
-  if (allowedRoles && role && !allowedRoles.includes(role)) {
-    const redirectMap = { admin: "/admin", teacher: "/teacher", parent: "/parent" };
-    return <Navigate to={redirectMap[role] || "/"} replace />;
+  // Admins can access any role-protected route (used for view-as previews).
+  if (allowedRoles && effectiveRole && !allowedRoles.includes(effectiveRole) && role !== "admin") {
+    const redirectMap: Record<AppRole, string> = { admin: "/admin", teacher: "/teacher", parent: "/parent" };
+    return <Navigate to={redirectMap[role!] || "/"} replace />;
   }
 
   return <>{children}</>;
