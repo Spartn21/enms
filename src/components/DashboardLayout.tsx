@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { RoleSwitcher } from "@/components/RoleSwitcher";
 import { ReadOnlyBanner } from "@/components/ReadOnlyBanner";
+import { SplashScreen } from "@/components/SplashScreen";
 import {
   LayoutDashboard, Baby, ClipboardCheck, MessageSquare, DollarSign, BarChart3,
   Settings, LogOut, Menu, X, BookOpen, Activity, Home, CreditCard, Bell, UserCheck,
@@ -113,6 +114,7 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
 
   return (
     <div className="flex min-h-screen bg-background">
+      <SplashScreen />
       <aside className="hidden lg:flex lg:w-64 lg:flex-col lg:border-r lg:border-border bg-card">
         <div className="flex h-16 items-center gap-2 border-b border-border px-6">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg gradient-primary">
@@ -194,13 +196,22 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
         </main>
       </div>
 
-      <nav className="fixed bottom-0 left-0 right-0 z-40 flex h-16 items-center justify-around border-t border-border bg-card lg:hidden">
+      <nav
+        className="fixed bottom-0 left-0 right-0 z-40 flex h-16 items-center justify-around border-t border-border bg-card lg:hidden animate-fade-in"
+        style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+      >
         {bottomNavItems.map((item) => {
           const active = location.pathname === item.href;
           return (
-            <Link key={item.href} to={item.href} className={`flex flex-col items-center gap-0.5 px-3 py-1 ${active ? "text-primary" : "text-muted-foreground"}`}>
-              {item.icon}
-              <span className="text-[10px] font-medium">{item.label}</span>
+            <Link
+              key={item.href}
+              to={item.href}
+              className={`flex flex-1 flex-col items-center gap-0.5 px-2 py-1 transition-all active:scale-95 ${
+                active ? "text-primary" : "text-muted-foreground"
+              }`}
+            >
+              <span className={`transition-transform ${active ? "scale-110" : ""}`}>{item.icon}</span>
+              <span className="text-[10px] font-medium truncate max-w-full">{item.label}</span>
             </Link>
           );
         })}
