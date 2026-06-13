@@ -264,6 +264,7 @@ export type Database = {
       }
       children: {
         Row: {
+          afternoon_session_enrolled: boolean
           allergies: string | null
           class_id: string | null
           created_at: string
@@ -282,6 +283,7 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          afternoon_session_enrolled?: boolean
           allergies?: string | null
           class_id?: string | null
           created_at?: string
@@ -300,6 +302,7 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          afternoon_session_enrolled?: boolean
           allergies?: string | null
           class_id?: string | null
           created_at?: string
@@ -340,7 +343,9 @@ export type Database = {
           capacity: number | null
           class_name: string
           created_at: string
+          has_afternoon_session: boolean
           id: string
+          level: Database["public"]["Enums"]["class_level"] | null
           school_id: string | null
           teacher_id: string | null
         }
@@ -349,7 +354,9 @@ export type Database = {
           capacity?: number | null
           class_name: string
           created_at?: string
+          has_afternoon_session?: boolean
           id?: string
+          level?: Database["public"]["Enums"]["class_level"] | null
           school_id?: string | null
           teacher_id?: string | null
         }
@@ -358,7 +365,9 @@ export type Database = {
           capacity?: number | null
           class_name?: string
           created_at?: string
+          has_afternoon_session?: boolean
           id?: string
+          level?: Database["public"]["Enums"]["class_level"] | null
           school_id?: string | null
           teacher_id?: string | null
         }
@@ -375,6 +384,68 @@ export type Database = {
             columns: ["teacher_id"]
             isOneToOne: false
             referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      fee_templates: {
+        Row: {
+          academic_year: string
+          afternoon_amount: number
+          class_id: string
+          created_at: string
+          created_by: string | null
+          due_date: string | null
+          extras_amount: number
+          id: string
+          meals_amount: number
+          notes: string | null
+          term: string
+          total_amount: number | null
+          transport_amount: number
+          tuition_amount: number
+          updated_at: string
+        }
+        Insert: {
+          academic_year: string
+          afternoon_amount?: number
+          class_id: string
+          created_at?: string
+          created_by?: string | null
+          due_date?: string | null
+          extras_amount?: number
+          id?: string
+          meals_amount?: number
+          notes?: string | null
+          term: string
+          total_amount?: number | null
+          transport_amount?: number
+          tuition_amount?: number
+          updated_at?: string
+        }
+        Update: {
+          academic_year?: string
+          afternoon_amount?: number
+          class_id?: string
+          created_at?: string
+          created_by?: string | null
+          due_date?: string | null
+          extras_amount?: number
+          id?: string
+          meals_amount?: number
+          notes?: string | null
+          term?: string
+          total_amount?: number | null
+          transport_amount?: number
+          tuition_amount?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fee_templates_class_id_fkey"
+            columns: ["class_id"]
+            isOneToOne: false
+            referencedRelation: "classes"
             referencedColumns: ["id"]
           },
         ]
@@ -699,6 +770,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      apply_fee_template: { Args: { _template_id: string }; Returns: number }
       get_children_directory: {
         Args: never
         Returns: {
@@ -725,6 +797,7 @@ export type Database = {
       app_role: "admin" | "teacher" | "parent"
       attendance_status: "present" | "absent" | "late"
       child_status: "active" | "graduated" | "withdrawn"
+      class_level: "daycare" | "baby" | "middle" | "top"
       gender_type: "male" | "female"
       meal_status: "consumed" | "partial" | "none"
       mood_type: "happy" | "okay" | "upset" | "tired"
@@ -864,6 +937,7 @@ export const Constants = {
       app_role: ["admin", "teacher", "parent"],
       attendance_status: ["present", "absent", "late"],
       child_status: ["active", "graduated", "withdrawn"],
+      class_level: ["daycare", "baby", "middle", "top"],
       gender_type: ["male", "female"],
       meal_status: ["consumed", "partial", "none"],
       mood_type: ["happy", "okay", "upset", "tired"],

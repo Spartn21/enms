@@ -22,6 +22,8 @@ import ClassesManagement from "./pages/admin/ClassesManagement";
 import AdminAccessRequests from "./pages/admin/AdminAccessRequests";
 import AttendanceManagement from "./pages/admin/AttendanceManagement";
 import FeeManagement from "./pages/admin/FeeManagement";
+import FeeTemplates from "./pages/admin/FeeTemplates";
+import UsersManagement from "./pages/admin/UsersManagement";
 import AdminMessages from "./pages/admin/MessagesPage";
 import ReportsPage from "./pages/admin/ReportsPage";
 import SettingsPage from "./pages/admin/SettingsPage";
@@ -73,6 +75,8 @@ const App = () => (
             <Route path="/admin/access-requests" element={<ProtectedRoute allowedRoles={["admin"]}><DashboardLayout><AdminAccessRequests /></DashboardLayout></ProtectedRoute>} />
             <Route path="/admin/attendance" element={<ProtectedRoute allowedRoles={["admin"]}><DashboardLayout><AttendanceManagement /></DashboardLayout></ProtectedRoute>} />
             <Route path="/admin/fees" element={<ProtectedRoute allowedRoles={["admin"]}><DashboardLayout><FeeManagement /></DashboardLayout></ProtectedRoute>} />
+            <Route path="/admin/fee-templates" element={<ProtectedRoute allowedRoles={["admin"]}><DashboardLayout><FeeTemplates /></DashboardLayout></ProtectedRoute>} />
+            <Route path="/admin/users" element={<ProtectedRoute allowedRoles={["admin"]}><DashboardLayout><UsersManagement /></DashboardLayout></ProtectedRoute>} />
             <Route path="/admin/messages" element={<ProtectedRoute allowedRoles={["admin"]}><DashboardLayout><AdminMessages /></DashboardLayout></ProtectedRoute>} />
             <Route path="/admin/reports" element={<ProtectedRoute allowedRoles={["admin"]}><DashboardLayout><ReportsPage /></DashboardLayout></ProtectedRoute>} />
             <Route path="/admin/settings" element={<ProtectedRoute allowedRoles={["admin"]}><DashboardLayout><SettingsPage /></DashboardLayout></ProtectedRoute>} />
