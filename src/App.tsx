@@ -75,6 +75,8 @@ const App = () => (
             <Route path="/admin/access-requests" element={<ProtectedRoute allowedRoles={["admin"]}><DashboardLayout><AdminAccessRequests /></DashboardLayout></ProtectedRoute>} />
             <Route path="/admin/attendance" element={<ProtectedRoute allowedRoles={["admin"]}><DashboardLayout><AttendanceManagement /></DashboardLayout></ProtectedRoute>} />
             <Route path="/admin/fees" element={<ProtectedRoute allowedRoles={["admin"]}><DashboardLayout><FeeManagement /></DashboardLayout></ProtectedRoute>} />
+            <Route path="/admin/fee-templates" element={<ProtectedRoute allowedRoles={["admin"]}><DashboardLayout><FeeTemplates /></DashboardLayout></ProtectedRoute>} />
+            <Route path="/admin/users" element={<ProtectedRoute allowedRoles={["admin"]}><DashboardLayout><UsersManagement /></DashboardLayout></ProtectedRoute>} />
             <Route path="/admin/messages" element={<ProtectedRoute allowedRoles={["admin"]}><DashboardLayout><AdminMessages /></DashboardLayout></ProtectedRoute>} />
             <Route path="/admin/reports" element={<ProtectedRoute allowedRoles={["admin"]}><DashboardLayout><ReportsPage /></DashboardLayout></ProtectedRoute>} />
             <Route path="/admin/settings" element={<ProtectedRoute allowedRoles={["admin"]}><DashboardLayout><SettingsPage /></DashboardLayout></ProtectedRoute>} />
