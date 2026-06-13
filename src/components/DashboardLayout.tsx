@@ -10,7 +10,7 @@ import { SplashScreen } from "@/components/SplashScreen";
 import {
   LayoutDashboard, Baby, ClipboardCheck, MessageSquare, DollarSign, BarChart3,
   Settings, LogOut, Menu, X, BookOpen, Activity, Home, CreditCard, Bell, UserCheck,
-  GraduationCap,
+  GraduationCap, Users, ReceiptText,
 } from "lucide-react";
 
 interface NavItem { label: string; href: string; icon: ReactNode; badgeKey?: "pendingRequests" }
@@ -19,8 +19,10 @@ const adminNav: NavItem[] = [
   { label: "Dashboard", href: "/admin", icon: <LayoutDashboard className="h-5 w-5" /> },
   { label: "Children", href: "/admin/children", icon: <Baby className="h-5 w-5" /> },
   { label: "Classes", href: "/admin/classes", icon: <GraduationCap className="h-5 w-5" /> },
+  { label: "Users", href: "/admin/users", icon: <Users className="h-5 w-5" /> },
   { label: "Requests", href: "/admin/access-requests", icon: <UserCheck className="h-5 w-5" />, badgeKey: "pendingRequests" },
   { label: "Attendance", href: "/admin/attendance", icon: <ClipboardCheck className="h-5 w-5" /> },
+  { label: "Fee Templates", href: "/admin/fee-templates", icon: <ReceiptText className="h-5 w-5" /> },
   { label: "Fees", href: "/admin/fees", icon: <DollarSign className="h-5 w-5" /> },
   { label: "Messages", href: "/admin/messages", icon: <MessageSquare className="h-5 w-5" /> },
   { label: "Reports", href: "/admin/reports", icon: <BarChart3 className="h-5 w-5" /> },
