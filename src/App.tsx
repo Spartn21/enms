@@ -22,6 +22,8 @@ import ClassesManagement from "./pages/admin/ClassesManagement";
 import AdminAccessRequests from "./pages/admin/AdminAccessRequests";
 import AttendanceManagement from "./pages/admin/AttendanceManagement";
 import FeeManagement from "./pages/admin/FeeManagement";
+import FeeTemplates from "./pages/admin/FeeTemplates";
+import UsersManagement from "./pages/admin/UsersManagement";
 import AdminMessages from "./pages/admin/MessagesPage";
 import ReportsPage from "./pages/admin/ReportsPage";
 import SettingsPage from "./pages/admin/SettingsPage";
