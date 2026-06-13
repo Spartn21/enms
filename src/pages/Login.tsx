@@ -11,6 +11,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
 import { GraduationCap, Loader2, Eye, EyeOff, AlertCircle, MailCheck } from "lucide-react";
+import { triggerSplash } from "@/components/SplashScreen";
 
 const schema = z.object({
   email: z.string().trim().email("Enter a valid email").max(255),
@@ -55,6 +56,7 @@ export default function Login() {
       return;
     }
     if (res.user) {
+      triggerSplash();
       const { data: roleData } = await supabase.rpc("get_user_role", { _user_id: res.user.id });
       const role = roleData as string;
       if (role === "parent") {

@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { RoleSwitcher } from "@/components/RoleSwitcher";
 import { ReadOnlyBanner } from "@/components/ReadOnlyBanner";
+import { SplashScreen } from "@/components/SplashScreen";
 import {
   LayoutDashboard, Baby, ClipboardCheck, MessageSquare, DollarSign, BarChart3,
   Settings, LogOut, Menu, X, BookOpen, Activity, Home, CreditCard, Bell, UserCheck,
